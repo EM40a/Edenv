@@ -1,0 +1,47 @@
+*, ::after,::before{
+    vertical-align: baseline;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+html, body {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    font-size: 100%;
+    width: 100%;
+}
+h1, h2, h3, h4, h5, h6, p, span, a, i, b, u{
+    font-size: 1em;
+    font-weight: inherit;
+    font-style: inherit;
+    text-decoration: none;
+    color: inherit;
+}
+a {
+    font-size: inherit;
+}
+p a {
+    display: inline;
+}
+img, picture, video, iframe, figure, figcaption {
+    max-width: 100%;
+    display: block;
+    width: 100%;
+    object-fit: cover;
+    object-position: center center;
+}
+ol, ul, li{
+    list-style-type: none;
+}
+form, input, textarea, select, button, label {
+    font-family: inherit;
+    font-size: inherit;
+    border: none;
+    hyphens: auto;
+    background-color: transparent;
+    display: block;
+    color: inherit;
+}
+button, input[type="submit"]{
+    cursor: pointer;
+}
