@@ -5,183 +5,197 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edenv - Enviroment Education</title>
+    <title>Edenv</title>
     <link rel="shortcut icon" type="image" href="assets/img/logo/logo_small_icon.png" />
     <!-- FontAwesome Icons -->
     <script defer src="js/fontAwesome.js"></script>
+    <!-- AOS Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <!-- Own resources -->
-    <link rel="stylesheet" href="css-scss/style.min.css">
+    <link rel="stylesheet" href="css/style.min.css">
     <script defer src="js/main.js"></script>
 </head>
 
 <body>
-    <header class="home" id="Home">
-        <nav class="nav container">
-            <figure>
-                <a href="index.html" class="logo" title="Edenv Home Page">
-                    <img class="logo-icon" src="assets/img/logo/icon.svg" alt="Icon">
-                    <span>|</span>
-                    <h2>Edenv</h2>
-                </a>
-            </figure>
+    <header class="home nav__section" id="home">
+        <nav class="nav">
+            <div class="container">
+                <picture class="logo">
+                    <a href="index.html" title="Edenv Home Page">
+                        <img class="logo__img" src="assets/img/logo/logo.svg" alt="Icon ">
+                    </a>
+                </picture>
 
-            <button class="nav-icon fa-icon">
-                <i class="fa-solid fa-bars" id="icon-togle"></i>
-            </button>
+                <button class="nav__icon">
+                    <i class="fa-solid fa-bars" id="icon-toggle"></i>
+                </button>
 
-            <div class="nav-overlay">
-                <ul class="nav-menu" id="menu">
-                    <li class="nav-item">
-                        <a href="#Home" class="nav-link">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#Blog" class="nav-link">Blog</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#Contact" class="nav-link">Contact</a>
-                    </li>
-                </ul>
+                <div class="overlay" id="overlay">
+                    <ul class="menu" id="menu">
+                        <li class="menu__item">
+                            <a href="#home" class="menu__link active">Home</a>
+                        </li>
+                        <li class="menu__item">
+                            <a href="#blog" class="menu__link">Blog</a>
+                        </li>
+                        <li class="menu__item">
+                            <a href="#contact" class="menu__link">Contact</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </nav>
 
-        <div class="hero container">
-            <figure class="hero-picture">
+        <section class="container hero">
+
+            <figure class="hero__picture">
                 <img src="assets/img/illustraciones/Recycling-hero.svg" alt="Hero Image" class="hero-img">
             </figure>
 
-            <div class="hero-text">
-                <h1 class="title">Let's work for <span class="title--marked">who</span> most need us</h1>
+            <div class="hero__text">
+                <h1 class="title">Let's work for <span class="title--marked" title="the planet">who</span> <br> most
+                    need us</h1>
                 <h2 class="subtitle">Together, we will make a better world</h2>
 
-                <form class="hero-form form">
-                    <input class="input" placeholder="example@email.com">
-                    <button class="button">Join us</button>
+                <form class="form" action="https://formsubmit.co/0ba860922736ff850386ab786b2cded5 " method="POST">
+
+                    <div class="input-group">
+                        <input class="input" type="email" name="email" autocomplete="on"
+                            placeholder="example@email.com" required>
+                        <i class="fas fa-times-circle form__icon" id="icon-checked"></i>
+                    </div>
+
+                    <input type="hidden" name="_next" value="http://127.0.0.1:5500/index.html">
+                    <input type="hidden" name="_captcha" value="false">
+
+                    <button class="button" id="button" type="submit">Join us</button>
                 </form>
             </div>
-        </div>
 
-        <figure class="getWave">
-            <img src="assets/img/waves/wave-home.svg" alt="get Wave">
-        </figure>
+        </section>
+
+        <picture class="getwave">
+            <img src="assets/img/waves/home.svg" alt="getWave">
+        </picture>
+
+       
     </header>
 
-    <main class="main" id="Blog">
-        <div class="cards-content">
-            <div class="card">
-                <picture class="card-picture">
-                    <img src="assets/img/illustraciones/Recycling-card-1.svg" alt="Recycling-card-1">
-                </picture>
-                <div class="card-text">
-                    <h2 class="card-subtitle">There are different types of recycling</h2>
-                    <p class="card-paragraph">
-                        That is why it's important to know where to dispose
-                    </p>
+    <main class="main">
+        <section class="blog nav__section" id="blog">
+
+            <div class="cards-content container">
+
+                <div class="card" data-aos="fade-up">
+                    <picture class="card__picture">
+                        <img src="assets/img/illustraciones/Recycling-card-1.svg" alt="Recycling-card-1">
+                    </picture>
+
+                    <div class="card__text">
+                        <h2 class="title">There are different types of recycling</h2>
+                        <p class="subtitle">
+                            That is why it's important to know where to dispose
+                        </p>
+                    </div>
+
+                    <button class="learn-more">
+                        <span class="circle" aria-hidden="true">
+                            <span class="icon arrow"></span>
+                        </span>
+                        <span class="button-text">Learn More</span>
+                    </button>
                 </div>
 
-                <button class="button">
-                    <a href="#"> Learn more <i class="fa-solid fa-arrow-right"></i></a>
-                </button>
-            </div>
+                <div class="card" data-aos="fade-up">
+                    <picture class="card__picture">
+                        <img src="assets/img/illustraciones/Recycling-card-2.svg" alt="Recycling-card-2">
+                    </picture>
+                    <div class="card__text">
+                        <h2 class="title">Recycling is so easy</h2>
+                        <p class="subtitle">
+                            Practicing it daily is a positive activity for you <br>
+                            What are you waiting for?
+                        </p>
+                    </div>
 
-            <div class="card">
-                <picture class="card-picture">
-                    <img src="assets/img/illustraciones/Recycling-card-2.svg" alt="Recycling-card-2">
-                </picture>
-                <div class="card-text">
-                    <h2 class="card-subtitle">Recycling is so easy</h2>
-                    <p class="card-paragraph">
-                        Practicing it daily is a positive activity for you <br>
-                        What are you waiting for?
-                </div>
-                </p>
+                    <button class="learn-more">
+                        <span class="circle" aria-hidden="true">
+                            <span class="icon arrow"></span>
+                        </span>
+                        <span class="button-text">Learn More</span>
+                    </button>
 
-                <button class="button">
-                    <a href="#"> Learn more <i class="fa-solid fa-arrow-right"></i></a>
-                </button>
-            </div>
-
-            <div class="card">
-                <picture class="card-picture">
-                    <img src="assets/img/illustraciones/Recycling-card-3.svg" alt="Recycling-card-3">
-                </picture>
-                <div class="card-text">
-                    <h2 class="card-subtitle">Things that we throw away</h2>
-                    <p class="card-paragraph">
-                        Can be converted into new products with the appropriate treatment
-                    </p>
                 </div>
 
-                <button class="button">
-                    <a href="#"> Learn more <i class="fa-solid fa-arrow-right"></i></a>
-                </button>
+                <div class="card" data-aos="fade-up">
+                    <picture class="card__picture">
+                        <img src="assets/img/illustraciones/Recycling-card-3.svg" alt="Recycling-card-3">
+                    </picture>
+                    <div class="card__text">
+                        <h2 class="title">Things that we throw away</h2>
+                        <p class="subtitle">
+                            Can be converted into new products with the appropriate treatment
+                        </p>
+                    </div>
+
+                    <button class="learn-more">
+                        <span class="circle" aria-hidden="true">
+                            <span class="icon arrow"></span>
+                        </span>
+                        <span class="button-text">Learn More</span>
+                    </button>
+                </div>
             </div>
-        </div>
+
+        </section>
     </main>
 
-    <section class="contact" id="Contact">
-        <figure class="getWave">
-            <img src="assets/img/waves/wave-contact.svg" alt="wave">
-        </figure>
+    <footer class="footer nav__section" id="contact">
+        <picture class="getwave">
+            <img src="assets/img/waves/contact.svg" alt="getWave">
+        </picture>
 
-        <footer class="footer container">
-            <figure>
-                <a href="index.html" class="logo" title="Edenv Home Page">
-                    <img class="logo-icon" src="assets/img/logo/icon.svg" alt="Icon">
-                    <span>|</span>
-                    <h2>Edenv</h2>
+
+        <section class="contact container">
+            <figure class="logo">
+                <a href="index.html" title="Edenv">
+                    <img class="logo__img" src="assets/img/logo/logo-white.svg" alt="Icon">
                 </a>
-                <figcaption>We seek to raise awareness about the damage we cause to the planet</figcaption>
+                <figcaption class="logo__hero">
+                    We want to raise awareness about the <span class="logo__hero--marked">damage</span> we cause to <span class="logo__hero--marked">the planet</span></figcaption>
             </figure>
 
-            <div class="footer-social-media">
-                <h2 class="title">Contact me</h2>
-                <ul>
-                    <a href="https://www.github.com/Em40a" target="_blank">
-                        <i class="fa-brands fa-github"></i>
-                    </a>
-                    <a href="https://www.instagram.com/Em40a.s" target="_blank">
-                        <i class="fa-brands fa-instagram"></i>
-                    </a>
-                    <a href="https://www.twitter.com/Em40a" target="_blank">
-                        <i class="fa-brands fa-twitter"></i>
-                    </a>
-                    <a href="https://web.whatsapp.com/send?phone=541132783612" target="_blank">
-                        <i class="fa-brands fa-whatsapp"></i>
-                    </a>
-                </ul>
-            </div>
+            <h3 class="title">Contact me</h3>
 
-            <div class="footer-sections">
-                <div class="footer-links">
-                    <h4>Section</h4>
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Features</a></li>
-                        <li><a href="#">Pricing</a></li>
-                        <li><a href="#">About</a></li>
-                    </ul>
-                </div>
+            <ul class="contact__social-media">
+                <a class="contact__link" href="https://www.github.com/Em40a" target="_blank">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+                <a class="contact__link" href="https://www.instagram.com/Em40a.s" target="_blank">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a class="contact__link" href="https://www.twitter.com/Em40a" target="_blank">
+                    <i class="fa-brands fa-twitter"></i>
+                </a>
+                <a class="contact__link" href="https://web.whatsapp.com/send?phone=541132783612" target="_blank">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
+            </ul>
 
-                <div class="footer-links">
-                    <h4>Section</h4>
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Features</a></li>
-                        <li><a href="#">Pricing</a></li>
-                        <li><a href="#">About</a></li>
-                    </ul>
-                </div>
-            </div>
+            <ul class="contact__main">
+                <li class="contact__main-item">Legal</li>
+                <li class="contact__main-item">Cookies</li>
+                <li class="contact__main-item">Privacy</li>
+                <li class="contact__main-item">Shipping</li>
+                <li class="contact__main-item">Refound</li>
+            </ul>
 
-            <div class="copyright">
-                <p>
-                    &#169;Copyright <a href="https://github.com/EM40a" target="_blank">Em40a</a>. All
-                    right
-                    reserved.
-                </p>
-            </div>
-        </footer>
-    </section>
+            <span class="copyright">
+                 &copy;Copyright 2022 <a href="https://github.com/EM40a" target="_blank">Em40a</a>. All rights reserved.
+            </span>
+        </section>
+    </footer>
 </body>
 
 </html>

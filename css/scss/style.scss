@@ -1,0 +1,562 @@
+@use 'mixins/mixins';
+@use 'partials/reset';
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
+
+:root {
+    --primary-dark: #0c1355;
+    --primary-light: #ffb01f;
+
+    --secondary-light: #63d470;
+
+    --clr-btn-light: hsl(216, 90%, 44%);
+    --clr-btn-normal: hsl(236, 88%, 45%);
+    --clr-btn-dark: hsl(236, 69%, 43%);
+
+
+    --bg-home: #ffffff;
+    --bg-blog: #eef0ff;
+
+    --bg-ul: #f2f5f7;
+
+    --fw-light: 300;
+    --fw-medium: 400;
+    --fw-bold: 700;
+
+    --height-nav: 74px;
+}
+
+//<========== Animations ==========>
+@keyframes shake {
+
+    0% {
+        transform: translateX(0);
+    }
+
+    10%,
+    90% {
+        transform: translateX(-10px);
+    }
+
+    20%,
+    80% {
+        transform: translateX(10px);
+    }
+
+    30%,
+    50%,
+    70% {
+        transform: translateX(-10px);
+    }
+
+    40%,
+    60% {
+        transform: translateX(10px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+//<========== Base Styles ==========>
+.container {
+    width: min(90%, 1200px);
+    margin-inline: auto;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    
+    &.active{
+        height: 100vh;
+        overflow-y: hidden;
+    }
+}
+
+.getWave {
+    width: 100%;
+}
+//<========== Nav Styles ==========>
+.logo {
+    width: 160px;
+
+}
+
+.nav {
+    z-index: 999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--bg-home);
+
+    & .container {
+        @include mixins.flexbox(row, space-between, center);
+        height: var(--height-nav);
+
+    }
+
+    &__icon {
+        font-size: 30px;
+        line-height: .8;
+        z-index: 15;
+    }
+}
+
+.overlay {
+    z-index: 5;
+    position: fixed;
+    inset: 0;
+
+    visibility: hidden;
+    background-color: #000000a7;
+
+    transition: 700ms ease-out visibility;
+
+    &.active {
+        visibility: visible;
+    }
+}
+
+.menu {
+    --transform-ul: 100%;
+
+    @include mixins.flexbox(column, flex-start, center, 20px);
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    top: 0;
+
+    z-index: 10;
+
+    width: 50%;
+    max-width: 400px;
+    padding-top: 74px;
+
+
+    box-shadow: 4px 0px 8px 0 #4d4d4d;
+    background-color: var(--bg-ul);
+
+    transform: translateX(var(--transform-ul));
+    transition: 700ms ease-in-out transform;
+
+    &.active {
+        --transform-ul: 0;
+    }
+
+    &__item {
+        width: 80%;
+        margin-inline: auto;
+
+        font-size: 14px;
+        text-transform: uppercase;
+    }
+
+    &__link {
+        font-weight: var(--fw-bold);
+        color: var(--primary-dark);
+        opacity: .5;
+
+        transition: 400ms color, 400ms opacity;
+
+        &.active{
+
+            opacity: 1;
+            color: var(--primary-light);
+        }
+        
+        &:not(.active):hover{
+            opacity: 1;
+            color: var(--secondary-light);
+        }
+    }
+}
+
+.home {
+    @include mixins.flexbox(column, end);
+    background-color: var(--bg-home);
+    color: var(--primary-dark);
+}
+
+//<========== Hero Styles ==========>
+.title {
+    font-weight: var(--fw-bold);
+}
+
+.subtitle {
+    font-weight: var(--fw-light);
+}
+
+.hero {
+    @include mixins.flexbox(column, space-between, center, 20px);
+    padding-top: var(--height-nav);
+
+    &__picture {
+        width: clamp(18rem, 100%, 30rem);
+    }
+
+
+    &__text {
+        text-align: center;
+    }
+
+    .title {
+        font-size: clamp(32px, 4vw, 48px);
+
+        &--marked {
+            color: var(--secondary-light);
+        }
+    }
+
+    .subtitle {
+        margin: 1rem 0;
+        font-size: clamp(16px, 2vw, 28px);
+    }
+}
+
+//<========== Form Styles ==========>
+.button,
+.input {
+    line-height: 45px;
+    border-radius: 4px;
+}
+
+.button {
+    color: #fff;
+    background-color: var(--clr-btn-light);
+    transition: 200ms ease background-color;
+    padding: 0 18px;
+
+    &:hover {
+        background-color: var(--clr-btn-normal);
+    }
+
+
+    &:active {
+        box-shadow: 4px 6px 2px 0 var(--clr-btn-bold) inset;
+    }
+}
+
+.form {
+    display: grid;
+    grid-template-columns: 1fr;
+
+    gap: 10px;
+    margin: 12px 0;
+
+    .button,
+    .input-group {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .input-group {
+        --clr-valid: #63d470;
+        --clr-invalid: #C00000;
+        position: relative;
+
+        .input {
+            width: 100%;
+            border: 2px solid #ccc;
+
+            padding-left: 10px;
+            padding-right: 40px;
+
+            overflow: hidden;
+            text-overflow: ellipsis;
+            transition: 300ms ease all;
+
+            &:focus {
+                border: 2px solid #0075ff;
+                box-shadow: 0px 3px 12px 0px rgba(0, 0, 0, 0.1);
+                outline: none;
+            }
+
+            &.invalid:focus {
+                background-color: #ffdddd;
+                border: 2px solid var(--clr-invalid);
+                animation: shake 500ms;
+
+                &+.form__icon {
+                    color: var(--clr-invalid);
+                }
+            }
+
+            &.valid:focus {
+                background-color: #ddffdd;
+                border: 2px solid var(--clr-valid);
+
+                &+.form__icon {
+                    color: var(--clr-valid);
+                }
+            }
+        }
+    }
+
+    &__icon {
+        position: absolute;
+        bottom: 15px;
+        right: 10px;
+        color: transparent;
+
+        transition: 300ms ease color;
+    }
+
+}
+
+//<========== Main Styles ==========>
+.main {
+    background-color: var(--bg-main);
+
+    &>section {
+        padding-top: var(--height-nav);
+        min-height: 100vh;
+    }
+}
+
+.blog {
+    background: var(--bg-blog);
+}
+
+.cards-content {
+    @include mixins.flexbox(column, center, center, 2rem);
+    margin: auto;
+
+    .card {
+        @include mixins.flexbox(column, space-between, center, 18px);
+        padding-bottom: 1rem;
+        width: 18rem;
+
+
+        &__picture img {
+            pointer-events: none;
+            aspect-ratio: 3/2;
+        }
+
+        &__text {
+            line-height: 1.3;
+            text-align: center;
+        }
+
+        & .title {
+            color: #345;
+            font-size: 24px;
+
+        }
+
+        & .subtitle {
+            margin-top: 1rem;
+            font-size: 18px;
+            color: #777;
+        }
+    }
+}
+
+.learn-more {
+    $bg-btn: var(--clr-btn-light);
+    position: relative;
+
+    width: 12rem;
+    height: auto;
+
+    display: inline-block;
+    vertical-align: middle;
+
+    .circle {
+        position: relative;
+
+        width: 3rem;
+        height: 3rem;
+        margin: 0;
+
+        display: block;
+        background-color: $bg-btn;
+        border-radius: 1.625rem;
+
+        transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+
+        .icon {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+
+            margin: auto;
+            background: #fff;
+
+            transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+
+            &.arrow {
+                left: 0.625rem;
+                width: 1.125rem;
+                height: 0.125rem;
+
+                background: none;
+
+                transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+
+                &:before {
+                    content: "";
+                    position: absolute;
+                    top: -0.29rem;
+                    right: 0.0625rem;
+
+                    width: 0.625rem;
+                    height: 0.625rem;
+
+                    border-top: 0.125rem solid #fff;
+                    border-right: 0.125rem solid #fff;
+                    transform: rotate(45deg);
+                }
+            }
+
+        }
+    }
+
+    .button-text {
+        position: absolute;
+        inset: 0;
+
+        padding: 0.75rem 0;
+        margin: 0 0 0 1.85rem;
+
+        color: $bg-btn;
+        font-weight: var(--fw-bold);
+        line-height: 1.6;
+        text-align: center;
+        text-transform: uppercase;
+
+        transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    }
+
+
+    &:hover .circle {
+        width: 100%;
+    }
+
+    &:hover .circle .icon.arrow {
+        background: #fff;
+        transform: translate(1rem, 0);
+    }
+
+    &:hover .button-text {
+        color: #fff;
+    }
+
+}
+
+//<========== Footer Styles ==========>
+.footer {
+    background-color: var(--primary-dark);
+    color: #f2f2f2;
+}
+
+.contact {
+    @include mixins.flexbox(column, space-between, center);
+    padding-top: 20px;
+    font-size: clamp(14px, 2vw, 18px);
+
+    .logo {
+        @include mixins.flexbox(column, center, center, 10px);
+        margin-bottom: 1rem;
+        width: auto;
+
+        &__hero {
+            text-align: center;
+            width: 90%;
+
+            &--marked {
+                color: var(--primary-light);
+                font-weight: var(--fw-bold)
+            }
+        }
+    }
+
+    &__social-media,
+    &__main {
+        @include mixins.flexbox(row wrap, center, center, 1.5rem);
+        margin-bottom: 1rem;
+    }
+
+    .title {
+        font-size: 18px;
+    }
+
+    &__link {
+        font-size: 30px;
+        text-align: center;
+        opacity: .6;
+
+        
+        transition: 200ms ease all;
+        
+        &:hover {
+            color: var(--secondary-light);
+            opacity: 1;
+        }
+    }
+
+    &__main {
+        font-size: clamp(16px, 2vw, 18px);
+        
+        &-item {
+            cursor: pointer;
+            opacity: .5;
+
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+.copyright {
+    cursor: context-menu;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #777;
+
+    a:hover {
+        text-decoration: underline;
+        color: #ffdddd;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .nav__icon {
+        display: none;
+    }
+
+    .overlay,
+    .menu {
+        all: unset;
+    }
+
+    .menu {
+        display: flex;
+        column-gap: 2rem;
+
+    }
+
+    .hero {
+        @include mixins.flexbox(row-reverse, space-between, center);
+        
+        &__text {
+            text-align: left;
+        }
+    }
+
+    .form {
+        grid-template-columns: 1fr auto;
+
+    }
+
+    .blog {
+        @include mixins.flexbox(column, initial, center);
+    }
+
+    .cards-content {
+        @include mixins.flexbox(row, space-evenly, stretch);
+    }
+
+}
