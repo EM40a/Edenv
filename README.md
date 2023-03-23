@@ -8,4 +8,4 @@ And I use the [AOS library](https://michalsnik.github.io/aos/) for the animates 
 
 Here you can see the whole page 👇
 
-![Edenv HomePage](https://user-images.githubusercontent.com/109250897/225102159-a5c8c188-72e9-4839-9908-14314c52360a.png)
+![Edenv - Desktop](https://user-images.githubusercontent.com/109250897/227284338-1b7a20bb-274f-4cbc-b78b-460af36c6848.png)
